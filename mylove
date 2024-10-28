@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You Krista</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1a1a2e;
+            font-family: Arial, sans-serif;
+            color: #ff007f;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin: 20px;
+            text-align: center;
+            color: #ff007f;
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
+            animation: glow 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
+            }
+            50% {
+                text-shadow: 0 0 20px #ff007f, 0 0 30px #ff007f, 0 0 40px #ff007f;
+            }
+        }
+        
+        .rose {
+            font-size: 2rem;
+            position: absolute;
+            color: #ff007f;
+            transform-origin: center;
+            animation: rotate 4s linear infinite;
+            text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>I love you, Krista</h1>
+    <div id="roses-container"></div>
+
+    <script>
+        const roseEmoji = '🌹';
+        const roseContainer = document.getElementById('roses-container');
+
+        // Heart shape coordinates
+        const heartPoints = [
+            { x: 50, y: 15 }, { x: 55, y: 10 }, { x: 60, y: 15 },
+            { x: 65, y: 10 }, { x: 70, y: 15 }, { x: 75, y: 20 },
+            { x: 77, y: 27 }, { x: 75, y: 35 }, { x: 70, y: 40 },
+            { x: 65, y: 45 }, { x: 60, y: 50 }, { x: 55, y: 55 },
+            { x: 50, y: 60 }, { x: 45, y: 55 }, { x: 40, y: 50 },
+            { x: 35, y: 45 }, { x: 30, y: 40 }, { x: 25, y: 35 },
+            { x: 23, y: 27 }, { x: 25, y: 20 }, { x: 30, y: 15 },
+            { x: 35, y: 10 }, { x: 40, y: 15 }, { x: 45, y: 10 },
+        ];
+
+        // Generate roses in a heart shape
+        heartPoints.forEach((point, index) => {
+            const rose = document.createElement('span');
+            rose.classList.add('rose');
+            rose.innerText = roseEmoji;
+            rose.style.left = `${point.x}vw`;
+            rose.style.top = `${point.y}vh`;
+            rose.style.animationDelay = `${index * 0.1}s`;
+            roseContainer.appendChild(rose);
+        });
+    </script>
+</body>
+</html>
